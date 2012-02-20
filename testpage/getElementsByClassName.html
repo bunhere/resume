@@ -1,0 +1,30 @@
+<!doctype html>
+<head>
+<style>
+.dot { color:red;}
+</style>
+</head>
+<body>
+<p><b>document.getElementByClassName test</b></p>
+SPEC : <a href="http://www.w3.org/TR/html5/dom.html#dom-document-getelementsbyclassname">http://www.w3.org/TR/html5/dom.html#dom-document-getelementsbyclassname</a>
+<dl>
+    <dt>Items:</dt>
+    <dd>
+        <div class="dot">1st</div>
+        <div>2nd</div>
+        <div class="dot">3rd</div>
+        <div>4th</div>
+    </dd>
+</dl>
+<div id="result"/>
+<script>
+var str = "Result:";
+if (document.getElementsByClassName) {
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < dots.length; i++) str += dots[i].innerHTML + " ";
+    document.all["result"].innerText = str;
+} else {
+    document.all["result"].innerText = "Not supported";
+}
+</script>
+</body>
