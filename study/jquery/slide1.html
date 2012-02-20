@@ -73,6 +73,7 @@ div { width:100px; font-size:1em; }
 &lt;div&gt;ryuan:&lt;/div&gt;
 &lt;div class="tile"&gt;HELLO&lt;/div&gt;
 &lt;div class="tile" id="red"&gt;WORLD&lt;/div&gt;
+&lt;/body&gt;</pre>
       </ul>
       </article>
 
@@ -93,12 +94,13 @@ div:first-child { background-color:blue; }
 &lt;div class="tile"&gt;HELLO&lt;/div&gt;
 &lt;div class="tile" id="red"&gt;WORLD&lt;/div&gt;
 &lt;/body&gt;</pre>
-<a href="http://www.w3.org/TR/css3-selectors/#selectors">http://www.w3.org/TR/css3-selectors/#selectors</a>
+<a href="http://www.w3.org/TR/css3-selectors/#selectors" target="_blank">http://www.w3.org/TR/css3-selectors/#selectors</a>
       </article>
 
       <article>
-      <h3>This is jQuery.</h3>
+      <h3>jQuery can find elements like CSS Selector.</h3>
           <pre>
+&lt;!doctype html&gt;
 &lt;body&gt;
 &lt;div&gt;ryuan:&lt;/div&gt;
 &lt;div class="tile"&gt;HELLO&lt;/div&gt;
@@ -111,6 +113,101 @@ $(".tile").css('background-color','blue');
 $("#red").css('background-color','red');
 &lt;/script&gt;
 &lt;/body&gt;
+</pre>
+      </article>
+
+      <article>
+      <h3>JavaScript Event(1)</h3>
+          <pre>
+&lt;!doctype html&gt;
+&lt;head&gt;
+&lt;style&gt; div { width:100px; height:100px; font-size:1em; } &lt;/style&gt;
+&lt;script&gt;
+function clicked() {
+    document.all["result"].innerHTML = "clicked";
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="hello" onmousedown="clicked()"&gt;HELLO&lt;/div&gt;
+&lt;div id="result"&gt;&lt;/div&gt;
+&lt;script&gt;
+document.all["hello"].onmouseover = function() {
+    document.all["result"].innerHTML = "mouse over";
+}
+&lt;/script&gt;&lt;/body&gt;
+</pre>
+But, this is not enough.
+      </article>
+
+      <article>
+      <h3>JavaScript Event(2) DOM level 2</h3>
+<pre>
+&lt;!doctype html&gt;
+&lt;head&gt;
+&lt;style&gt; div { width:100px; height:100px; font-size:1em; } &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="hello"&gt;HELLO&lt;/div&gt;
+&lt;div id="result"&gt;&lt;/div&gt;
+&lt;script&gt;
+document.all["hello"].addEventListener("mouseover", function() {
+    document.all["result"].innerHTML = "mouse over";
+}, false);
+document.all["hello"].addEventListener("click", function() {
+    document.all["result"].innerHTML = "clicked";
+}, false);
+&lt;/script&gt;&lt;/body&gt;
+</pre>This is not working on IE.
+      </article>
+
+      <article>
+      <h3>jQuery version of event handling</h3>
+<pre>
+&lt;!doctype html&gt;
+&lt;head&gt;
+&lt;style&gt; div { width:100px; height:100px; font-size:1em; } &lt;/style&gt;
+&lt;script
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+$(function() {
+    $("#hello").on("mouseover", function() {
+            $("#result").text("mouse over");
+        })
+        .on("click", function() {
+            $("#result").text("clicked");
+        })
+});
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="hello"&gt;hello&lt;/div&gt;
+&lt;div id="result"&gt;&lt;/div&gt;
+&lt;/body&gt;
+</pre>
+      </article>
+      <article>
+      <h3> jQuery - Animation </h3>
+      <pre>
+&lt;head&gt;&lt;style&gt;
+div { position:absolute; width:100px; height:100px;
+      background-color:#0fa0ef;}
+#hello { background-color: #ef0fa0; text-align:center;}
+.jsversion { display:none;}
+&lt;/style&gt;
+&lt;script
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+$(function() {
+    $("#jquery").addClass("jsversion");
+    $("#hello").on("click", function() {
+        $(this).siblings("div").fadeIn(2000);
+        });
+});
+&lt;/script&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="hello"&gt;HELLO&lt;/div&gt;
+&lt;div id="jquery"&gt;jQuery&lt;/div&gt;&lt;/body&gt;
 </pre>
       </article>
 
