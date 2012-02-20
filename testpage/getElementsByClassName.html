@@ -19,12 +19,26 @@ SPEC : <a href="http://www.w3.org/TR/html5/dom.html#dom-document-getelementsbycl
 <div id="result"/>
 <script>
 var str = "Result:";
-if (document.getElementsByClassName) {
-    var dots = document.getElementsByClassName("dot");
-    for (i = 0; i < dots.length; i++) str += dots[i].innerHTML + " ";
-    document.all["result"].innerText = str;
-} else {
-    document.all["result"].innerText = "Not supported";
+if (document.getElementsByClassName != undefined) {
+    str += "Not supported, ";
+    // referenced http://forums.devshed.com/javascript-development-115/javascript-get-all-elements-of-class-abc-24349.html
+    document.getElementsByClassName = function(className) {
+        var hasClassName = new RegExp("(?:^|\\s)" + className + "(?:$|\\s)");
+        var allElements = document.getElementsByTagName("*");
+        var results = [];
+
+        var element;
+        for (var i = 0; (element = allElements[i]) != null; i++) {
+            var elementClass = element.className;
+            if (elementClass && elementClass.indexOf(className) != -1 && hasClassName.test(elementClass))
+                results.push(element);
+        }
+
+        return results;
+    }
 }
+var dots = document.getElementsByClassName("dot");
+for (i = 0; i < dots.length; i++) str += dots[i].innerHTML + " ";
+document.all["result"].innerText = str;
 </script>
 </body>
