@@ -1,0 +1,83 @@
+<!doctype html>
+<head>
+<title>1 to 49</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densityDpi=high-dpi">
+<style>
+body {
+    width: 480px;
+    text-align: center;
+    margin-left:0px;
+    margin-top:0px;
+}
+
+.stage {
+width: 480px;
+height: 800px;
+background-color: #ccc;
+}
+
+.button, .button:visited {
+    display: inline-block;
+    padding: 10px 10px 10px;
+    margin: 3px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 2em;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    position: relative;
+    cursor: pointer;
+    background-color: #2981e4;
+}
+
+.orange { background-color: #ff5c00;}
+.ornage:hover { background-color: #d45500; }
+
+.clicked {
+    width:100px;
+    background-color: #91bd09;
+}
+
+</style>
+</head>
+<body>
+<div class="stage">
+  <h1 id="title">1 to 49</h1>
+  <div id="reset" class="button orange">reset</div>
+  <div class="numbers"/>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+$(function() {
+    var buttons = new Array();
+    function init() {
+        for (i = 49; i != 0; --i) {
+            var txt = i;
+            if (i < 10)
+                txt = "0" + txt;
+
+            buttons[i] = $("<div/>").addClass("button")
+                           .text(txt)
+                           .on("click", function() {
+                               $(this).addClass("clicked");
+                               });
+            $(".numbers").append(buttons[i]);
+        }
+    }
+    function reset() {
+        console.log("test");
+    }
+
+    $("#reset").live("click", function() {
+        reset();
+        });
+
+    init();
+    reset();
+});
+</script>
+</body>
