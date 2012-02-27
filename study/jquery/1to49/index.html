@@ -68,7 +68,7 @@ $(function() {
 
             buttons[i] = $("<div/>").addClass("button")
                            .text(txt)
-                           .on("click", function() {
+                           .on("touchend", function() {
                                $(this).addClass("clicked");
                                });
             $(".numbers").append(buttons[i]);
