@@ -1,19 +1,21 @@
 <!doctype html>
 <head>
 <title>1 to 49</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densityDpi=high-dpi">
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densityDpi=high-dpi"/>
+<style type="text/css">
 body {
     width: 480px;
     text-align: center;
-    margin-left:0px;
-    margin-top:0px;
+    margin-left: 0px;
+    margin-top: 0px;
 }
+h1, p { margin: 0px; }
 
 .stage {
 width: 480px;
 height: 800px;
 background-color: #ccc;
+margin:0px;
 }
 
 .button, .button:visited {
@@ -34,11 +36,15 @@ background-color: #ccc;
     background-color: #2981e4;
 }
 
-.orange { background-color: #ff5c00;}
-.ornage:hover { background-color: #d45500; }
+.orange { 
+    width:100px;
+    padding: 3px 10px 5px;
+    margin-bottom: 20px;
+    background-color: #ff5c00;
+}
+.orange:hover { background-color: #d45500; }
 
 .clicked {
-    width:100px;
     background-color: #91bd09;
 }
 
@@ -47,7 +53,7 @@ background-color: #ccc;
 <body>
 <div class="stage">
   <h1 id="title">1 to 49</h1>
-  <div id="reset" class="button orange">reset</div>
+  <h3 id="timer">00:00:00</h3><div id="reset" class="button orange">reset</div>
   <div class="numbers"/>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -69,7 +75,8 @@ $(function() {
         }
     }
     function reset() {
-        console.log("test");
+        for (i = 49; i != 0; --i) {
+        }
     }
 
     $("#reset").live("click", function() {
