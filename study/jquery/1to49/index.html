@@ -66,22 +66,32 @@ $(function() {
             if (i < 10)
                 txt = "0" + txt;
 
-            buttons[i] = $("<div/>").addClass("button")
+            buttons[i-1] = $("<div/>").addClass("button")
                            .text(txt)
+                           .data("value", i)
                            .on("touchmove", function() {
                                $(this).addClass("clicked");
                                });
-            $(".numbers").append(buttons[i]);
+            $(".numbers").append(buttons[i-1]);
         }
     }
     function reset() {
+        //randomize
         for (i = 49; i != 0; --i) {
+            var seed = Math.floor(Math.random() * 49);
+            var value = buttons[i-1].data("value");
+            var text = buttons[i-1].text();
+
+            buttons[i-1].data("value", buttons[seed].data("value"))
+                      .text(buttons[seed].text());
+            buttons[seed].data("value", value)
+                         .text(text);
         }
     }
 
     $("#reset").live("click", function() {
         reset();
-        });
+    });
 
     init();
     reset();
