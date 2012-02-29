@@ -87,7 +87,7 @@ $(function() {
         $.attrFn[ name ] = true;
     });
     function init() {
-        $(".numbers > div").live("touchdown", function() {
+        $(".numbers > div").live("touchstart", function() {
             if (started == false) return;
             var $this = $(this);
             if ($this.data("value") == lastClicked + 1) {
