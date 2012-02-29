@@ -79,6 +79,19 @@ $(function() {
     var finished = false;
 
     function init() {
+        $(".numbers > div").live("click", function() {
+            if (started == false) return;
+            var $this = $(this);
+            if ($this.data("value") == lastClicked + 1) {
+                $this.addClass("clicked");
+                lastClicked++;
+            }
+            if (lastClicked == 49) {
+                //finished
+                started = false;
+                finished = true;
+            }
+        });
         for (i = 49; i != 0; --i) {
             var txt = i;
             if (i < 10)
@@ -86,20 +99,7 @@ $(function() {
 
             buttons[i-1] = $("<div/>").addClass("button")
                            .text(txt)
-                           .data("value", i)
-                           .on("click", function() {
-                               if (started == false) return;
-                               var $this = $(this);
-                               if ($this.data("value") == lastClicked + 1) {
-                                   $this.addClass("clicked");
-                                   lastClicked++;
-                               }
-                               if (lastClicked == 49) {
-                                   //finished
-                                   started = false;
-                                   finished = true;
-                               }
-                           });
+                           .data("value", i);
             $(".numbers").prepend(buttons[i-1]);
         }
     }
