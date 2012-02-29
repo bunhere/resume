@@ -78,6 +78,14 @@ $(function() {
     var started = false;
     var finished = false;
 
+    // add new event shortcuts
+    $.each(( "touchstart touchmove touchend").split( " " ), function( i, name ) {
+        $.fn[ name ] = function( fn ) {
+            return fn ? this.bind( name, fn ) : this.trigger( name );
+        };
+
+        $.attrFn[ name ] = true;
+    });
     function init() {
         $(".numbers > div").live("touchdown", function() {
             if (started == false) return;
