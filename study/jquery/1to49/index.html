@@ -126,6 +126,7 @@ $(function() {
     }
 
     function stopWatch() {
+        window.alert($timr.text());
         var ms = new Date().getTime() - startTime.getTime();
 
         var ts = parseInt(ms / 10);
@@ -143,7 +144,6 @@ $(function() {
                 $o.addClass("clicked");
             });
         $timer.text(m + ":" + s + "." + ts);
-        window.alert($timr.text());
         if (started)
             setTimeout(stopWatch, 1000 / 60);
         else if (finished) {
@@ -164,7 +164,6 @@ $(function() {
             $(this).text("give up");
             startTime = new Date();
 
-            $(".numbers > div:not(.clicked)").text("test");
             setTimeout(stopWatch, 1000 / 60);
         }
     });
