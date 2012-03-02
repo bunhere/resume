@@ -138,12 +138,12 @@ $(function() {
         if (s < 10) s = "0" + s;
         if (m < 10) m = "0" + m;
 
-        $timer.text(m + ":" + s + "." + ts);
         $(".numbers > div:not(.clicked)").each(function(i, o) {
             var $o = $(o);
             if ($o.data("value") <= lastClicked)
                 $o.addClass("clicked");
             });
+        $timer.text(m + ":" + s + "." + ts);
         if (started)
             setTimeout(stopWatch, 1);
         else if (finished) {
