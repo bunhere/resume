@@ -126,8 +126,7 @@ $(function() {
     }
 
     function stopWatch() {
-        now = new Date();
-        var ms = now.getTime() - startTime.getTime();
+        var ms = new Date().getTime() - startTime.getTime();
 
         var ts = parseInt(ms / 10);
         var s = parseInt(ts / 100);
@@ -138,9 +137,14 @@ $(function() {
         if (s < 10) s = "0" + s;
         if (m < 10) m = "0" + m;
 
+        $(".numbers > div:not(.clicked)").each(function(i, o) {
+            var $o = $(o);
+            if ($o.data("value") <= lastClicked)
+                $o.addClass("clicked");
+            });
         $timer.text(m + ":" + s + "." + ts);
         if (started)
-            setTimeout(stopWatch, 1);
+            setTimeout(stopWatch, 1000 / 60);
         else if (finished) {
             alert("your record is " + m + ":" + s + "." + ts);
             $("#play").text("start");
@@ -159,7 +163,7 @@ $(function() {
             $(this).text("give up");
             startTime = new Date();
 
-            setTimeout(stopWatch, 1);
+            setTimeout(stopWatch, 1000 / 60);
         }
     });
 
