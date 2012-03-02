@@ -2,6 +2,12 @@
 <head>
 <title>1 to 49</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densityDpi=high-dpi"/>
+<style>
+.blue {
+width:480px;
+height:480px;
+background-color:blue;
+}
 </style>
 </head>
 <body>
@@ -13,13 +19,16 @@ google_ad_width = 468;
 google_ad_height = 60;
 //-->
 </script>
-
-This site is to collect events within 30seconds<br>
-Please click/touch 10 times after started.<br>
-<button>Start to collect </button>
 <script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
+<br>
+
+This site is to collect events within 10seconds<br>
+Please click/touch below rectangle 10 times after started.<br>
+<button>Start to collect </button>
+<div class="blue">
+</div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>
 $(function() {
@@ -28,12 +37,13 @@ $(function() {
         $("<div></div>").text("collected:" + mouse_count)
                         .insertAfter($("button"));
     }
-    $("body").live("mousedown", function() {
+    $(".blue").live("mousedown", function() {
+        console.log("mousedown");
         mouse_count++;
     });
     $("button").live("click", function() {
         window.alert("Start");
-        setTimeout(stop, 30000);
+        setTimeout(stop, 10000);
         });
 });
 </script>
