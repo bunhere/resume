@@ -143,6 +143,7 @@ $(function() {
                 $o.addClass("clicked");
             });
         $timer.text(m + ":" + s + "." + ts);
+        window.alert($timr.text());
         if (started)
             setTimeout(stopWatch, 1000 / 60);
         else if (finished) {
