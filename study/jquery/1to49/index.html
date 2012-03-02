@@ -164,6 +164,7 @@ $(function() {
             $(this).text("give up");
             startTime = new Date();
 
+            $(".numbers > div:not(.clicked)").text("test");
             setTimeout(stopWatch, 1000 / 60);
         }
     });
