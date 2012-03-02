@@ -23,9 +23,17 @@ google_ad_height = 60;
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
 <br>
-
+<p>
 This site is to collect events within 10seconds<br>
 Please click/touch below rectangle 10 times after started.<br>
+</p>
+<select id="eventtype">
+    <option value="mousedown">mousedown</option>
+    <option value="mouseup">mouseup</option>
+    <option value="click">click</option>
+    <option value="touchdown">touchdown</option>
+    <option value="touchup">touchup</option>
+</select>
 <button>Start to collect </button>
 <div class="blue">
 </div>
@@ -33,18 +41,25 @@ Please click/touch below rectangle 10 times after started.<br>
 <script>
 $(function() {
     var mouse_count = 0;
+    var eventString;
+    var $bluebox = $(".blue");
+    var $button = $("button");
+    function counter() {
+        mouse_count++;
+    }
     function stop() {
         $("<div></div>").text("collected:" + mouse_count)
-                        .insertAfter($("button"));
+                        .insertAfter($button);
+        $bluebox.die(eventString, counter);
     }
-    $(".blue").live("mousedown", function() {
-        console.log("mousedown");
-        mouse_count++;
-    });
-    $("button").live("click", function() {
-        window.alert("Start");
+    $button.live("click", function() {
+        eventString = $("#eventtype option:selected").val();
+        $bluebox.live(eventString,  counter);
+        mouse_count = 0;
+        window.alert("Start. please click ten times");
         setTimeout(stop, 10000);
         });
+    $
 });
 </script>
 </body>
