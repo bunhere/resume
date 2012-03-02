@@ -31,8 +31,8 @@ Please click/touch below rectangle 10 times after started.<br>
     <option value="mousedown">mousedown</option>
     <option value="mouseup">mouseup</option>
     <option value="click">click</option>
-    <option value="touchdown">touchdown</option>
-    <option value="touchup">touchup</option>
+    <option value="touchstart">touchstart</option>
+    <option value="touchend">touchend</option>
 </select>
 <button>Start to collect </button>
 <div class="blue">
@@ -40,6 +40,15 @@ Please click/touch below rectangle 10 times after started.<br>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>
 $(function() {
+    // add new event shortcuts
+    $.each(( "touchstart touchmove touchend").split( " " ), function( i, name ) {
+        $.fn[ name ] = function( fn ) {
+            return fn ? this.bind( name, fn ) : this.trigger( name );
+        };
+
+        $.attrFn[ name ] = true;
+    });
+
     var mouse_count = 0;
     var eventString;
     var $bluebox = $(".blue");
