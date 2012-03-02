@@ -92,11 +92,10 @@ $(function() {
             if ($(this).data("value") == lastClicked + 1) {
                 //$this.addClass("clicked");
                 lastClicked++;
-            }
-            if (lastClicked == 49) {
-                //finished
-                started = false;
-                finished = true;
+                if (lastClicked == 49) {
+                    started = false;
+                    finished = true;
+                }
             }});
         for (i = 49; i != 0; --i) {
             var txt = i;
