@@ -90,7 +90,6 @@ $(function() {
         $(".numbers > div").live("touchstart", function() {
             if (started == false) return;
             if ($(this).data("value") == lastClicked + 1) {
-                //$this.addClass("clicked");
                 lastClicked++;
                 if (lastClicked == 49) {
                     started = false;
