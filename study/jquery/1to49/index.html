@@ -136,6 +136,12 @@ $(function() {
         if (ts < 10) ts = "0" + ts;
         if (s < 10) s = "0" + s;
         if (m < 10) m = "0" + m;
+
+        $(".numbers > div:not(.clicked)").each(function(i, o) {
+            var $o = $(o);
+            if ($o.data("value") <= lastClicked)
+                $o.addClass("clicked");
+            });
         $timer.text(m + ":" + s + "." + ts);
         if (started)
             setTimeout(stopWatch, 1000 / 60);
