@@ -89,17 +89,15 @@ $(function() {
     function init() {
         $(".numbers > div").live("touchstart", function() {
             if (started == false) return;
-            var $this = $(this);
-            if ($this.data("value") == lastClicked + 1) {
-                $this.addClass("clicked");
+            if ($(this).data("value") == lastClicked + 1) {
+                //$this.addClass("clicked");
                 lastClicked++;
             }
             if (lastClicked == 49) {
                 //finished
                 started = false;
                 finished = true;
-            }
-        });
+            }});
         for (i = 49; i != 0; --i) {
             var txt = i;
             if (i < 10)
@@ -120,7 +118,7 @@ $(function() {
             var text = buttons[i-1].text();
 
             buttons[i-1].data("value", buttons[seed].data("value"))
-                      .text(buttons[seed].text());
+                        .text(buttons[seed].text());
             buttons[seed].data("value", value)
                          .text(text);
         }
@@ -141,6 +139,11 @@ $(function() {
         if (m < 10) m = "0" + m;
 
         $timer.text(m + ":" + s + "." + ts);
+        $(".numbers > div:not(.clicked)").each(function(i, o) {
+            var $o = $(o);
+            if ($o.data("value") <= lastClicked)
+                $o.addClass("clicked");
+            });
         if (started)
             setTimeout(stopWatch, 1);
         else if (finished) {
