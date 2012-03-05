@@ -78,6 +78,12 @@ $(function() {
     var started = false;
     var finished = false;
 
+    var events;
+    if (navigator.userAgent.indexOf("mobile") > -1)
+        events = "touchstart";
+    else
+        events = "mouseup";
+
     // add new event shortcuts
     $.each(( "touchstart touchmove touchend").split( " " ), function( i, name ) {
         $.fn[ name ] = function( fn ) {
@@ -87,7 +93,7 @@ $(function() {
         $.attrFn[ name ] = true;
     });
     function init() {
-        $(".numbers > div").live("touchstart", function() {
+        $(".numbers > div").live(events, function() {
             if (started == false) return;
             if ($(this).data("value") == lastClicked + 1) {
                 lastClicked++;
