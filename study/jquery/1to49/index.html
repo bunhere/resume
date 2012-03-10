@@ -81,7 +81,7 @@ $(function() {
     var agent=navigator.userAgent.toLowerCase();
     var is_iphone = (agent.indexOf('iphone')!=-1);
     if (is_iphone) {
-        viewport.setAttribute('content','width=device-width, initial-scale=0.66, maximum-scale=0.66, user-scalable=no');    
+        viewport.setAttribute('content','width=device-width, initial-scale=0.6, maximum-scale=0.6, user-scalable=no');    
     } else {
         var newDPI = 480 / window.innerWidth * 240;
         var viewport = document.querySelector("meta[name=viewport]");
