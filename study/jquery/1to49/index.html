@@ -79,7 +79,7 @@ $(function() {
     var finished = false;
 
     var agent=navigator.userAgent.toLowerCase();
-    var is_iphone = ((agent.indexOf('iphone')!=-1);
+    var is_iphone = (agent.indexOf('iphone')!=-1);
     if (is_iphone) {
         window.alert("test");
         viewport.setAttribute('content','width=device-width, initial-scale=0.66, maximum-scale=0.66, user-scalable=no');    
