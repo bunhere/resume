@@ -78,9 +78,9 @@ $(function() {
     var started = false;
     var finished = false;
 
-    alert("window.innerWidth = " + window.innerWidth);
-    var newDPI = window.innerWidth / 480 * 240;
-    document.getElementById("viewport").setAttribute('content','width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densityDpi=' + newDPI);
+    var newDPI = 480 / window.innerWidth * 240;
+    var viewport = document.querySelector("meta[name=viewport]");
+    viewport.setAttribute('content','width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densityDpi=' + newDPI);
     
     var events;
     if (navigator.userAgent.indexOf("mobile") > -1)
