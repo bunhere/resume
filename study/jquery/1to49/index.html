@@ -1,7 +1,7 @@
 <!doctype html>
 <head>
 <title>1 to 49</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <style type="text/css">
 body {
     width: 480px;
@@ -80,7 +80,7 @@ $(function() {
 
     var newDPI = 480 / window.innerWidth * 240;
     var viewport = document.querySelector("meta[name=viewport]");
-    viewport.setAttribute('content','width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densityDpi=' + newDPI);
+    //viewport.setAttribute('content','width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densityDpi=' + newDPI);
     
     var events;
     if (navigator.userAgent.indexOf("mobile") > -1)
