@@ -85,7 +85,8 @@ $(function() {
         //alert(window.innerWidth);
         //viewport.setAttribute('content','width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');    
     } else {
-        var newDPI = 480 / window.innerWidth * 240 * 0.667;
+        alert(window.innerWidth);
+        var newDPI = 480 / window.innerWidth * 240;
         viewport.setAttribute('content','width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densityDpi=' + newDPI);    
     }
     
