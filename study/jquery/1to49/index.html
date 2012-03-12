@@ -86,7 +86,7 @@ $(function() {
         //viewport.setAttribute('content','width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');    
     } else {
         alert(window.innerWidth);
-        var newDPI = 480 / window.innerWidth * 240;
+        var newDPI = 480 / window.innerWidth * 240 * 1.5;
         viewport.setAttribute('content','width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densityDpi=' + newDPI);    
     }
     
