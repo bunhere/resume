@@ -83,7 +83,8 @@ $(function() {
     var is_ipad = (agent.indexOf('iphone')!=-1 || agent.indexOf('ipad')!=-1);
     var viewport = document.querySelector("meta[name=viewport]");
     if (is_ipad) {
-        viewport.setAttribute('content','width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+        // resolution of ipad is 1024 * 768
+        viewport.setAttribute('content','width=device-width, initial-scale=1.6, maximum-scale=1.6, user-scalable=no');
         alert(window.innerWidth);
     } else if (is_iphone) {
         alert(window.innerWidth);
