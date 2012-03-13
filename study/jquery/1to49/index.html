@@ -1,5 +1,6 @@
 <!doctype html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=0.667, maximum-scale=0.667, user-scalable=no, target-densitydpi=360"/>
 <title>1 to 49</title>
 <style type="text/css">
 body {
@@ -83,8 +84,8 @@ $(function() {
     var is_ipad = (agent.indexOf('ipad')!=-1);
     var viewport = document.querySelector("meta[name=viewport]");
     if (is_ipad) {
-        // resolution of ipad is 1024 * 768
-        viewport.setAttribute('content','width=device-width, initial-scale=1.6, maximum-scale=1.6, user-scalable=no');
+        // resolution of ipad is 1024 * 576?
+        viewport.setAttribute('content','width=device-width, initial-scale=1.2, maximum-scale=1.2, user-scalable=no');
     } else if (is_iphone) {
         alert(window.innerWidth);
         //viewport.setAttribute('content','width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
