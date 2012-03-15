@@ -1,6 +1,21 @@
 <!doctype html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=0.667, maximum-scale=0.667, user-scalable=no, target-densitydpi=360"/>
+<script>
+var agent=navigator.userAgent.toLowerCase();
+var viewportTag=document.createElement('meta');
+viewportTag.id="viewport";
+viewportTag.name="viewport";
+
+var is_iphone = (agent.indexOf('iphone')!=-1);
+var scaleFactor=window.innerWidth/480;
+/*if (is_iphone) {
+  viewportTag.content="width=480,initial-scale="+scaleFactor+",maximum-scale="+scaleFactor+",user-scalable=no,target-densityDpi=device-dpi"
+} else {
+}*/
+viewportTag.content="width=480,initial-scale="+scaleFactor+",maximum-scale="+scaleFactor+",user-scalable=no,target-densityDpi=device-dpi"
+document.getElementsByTagName('head')[0].appendChild(viewportTag);
+
+</script>
 <title>1 to 49</title>
 <style type="text/css">
 body {
@@ -78,23 +93,6 @@ $(function() {
     var started = false;
     var finished = false;
 
-    var agent=navigator.userAgent.toLowerCase();
-    window.alert(window.innerWidth);
-    var is_iphone = (agent.indexOf('iphone')!=-1);
-    var is_ipad = (agent.indexOf('ipad')!=-1);
-    var viewport = document.querySelector("meta[name=viewport]");
-    if (is_ipad) {
-        // resolution of ipad is 1024 * 576?
-        viewport.setAttribute('content','width=device-width, initial-scale=1.6, maximum-scale=1.6, user-scalable=no');
-    } else if (is_iphone) {
-        alert(window.innerWidth);
-        //viewport.setAttribute('content','width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
-    } else {
-        //var newDPI = 480 / window.innerWidth * 240 * 1.5;
-        //viewport.setAttribute('content','width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densityDpi=' + newDPI);
-    }
-    
-    
     var events;
     if (navigator.userAgent.indexOf("mobile") > -1)
         events = "touchstart";
