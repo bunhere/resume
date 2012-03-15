@@ -7,13 +7,12 @@ viewportTag.id="viewport";
 viewportTag.name="viewport";
 
 var is_iphone = (agent.indexOf('iphone')!=-1);
-var scaleFactor=window.innerWidth/480;
-window.alert(window.innerWidth);
-/*if (is_iphone) {
-  viewportTag.content="width=480,initial-scale="+scaleFactor+",maximum-scale="+scaleFactor+",user-scalable=no,target-densityDpi=device-dpi"
+if (is_iphone) {
+  viewportTag.content="width=480,initial-scale=0.67,maximum-scale=0.67,user-scalable=no,target-densityDpi=device-dpi"
 } else {
-}*/
-viewportTag.content="width=480,initial-scale="+scaleFactor+",maximum-scale="+scaleFactor+",user-scalable=no,target-densityDpi=device-dpi"
+  var scaleFactor=window.innerWidth/480;
+  viewportTag.content="width=480,initial-scale="+scaleFactor+",maximum-scale="+scaleFactor+",user-scalable=no,target-densityDpi=device-dpi"
+}
 document.getElementsByTagName('head')[0].appendChild(viewportTag);
 
 </script>
