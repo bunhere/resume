@@ -144,6 +144,7 @@ $(function() {
         $(".button.clicked").removeClass("clicked");
     }
 
+    var count;
     function stopWatch() {
         var ms = new Date().getTime() - startTime.getTime();
 
@@ -161,7 +162,8 @@ $(function() {
             if ($o.data("value") <= lastClicked)
                 $o.addClass("clicked");
             });
-        $timer.text(m + ":" + s + "." + ts);
+        //$timer.text(m + ":" + s + "." + ts);
+        $timer.text("" + count);
         if (started)
             setTimeout(stopWatch, 1000 / 60);
         else if (finished) {
