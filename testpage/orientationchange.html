@@ -19,11 +19,13 @@ $(function() {
    $(window).bind("orientationchange", function() {
        var orientation = window.orientation;
        $("div#box").css('-webkit-transform', 'rotate(-' + orientation + 'deg)');
+       $("div#result").html($("div#result").html() + "<br/> new orientation : " + orientation);
        });
 });
 </script>
 </head>
 <body>
 <div id="box"></div>
+<div id="result"></div>
 </body>
 </html>
