@@ -51,4 +51,24 @@ dd {
         <p> <a href="testpage/orientationchange.html">onorientationchange</a></p>
     </dd>
 </dl>
+<select id="t">
+    <option></option>
+</select>
+<script>
+var newValue = 0;
+function a() {
+    if (newValue == 40)
+        return;
+    var nOption = document.createElement("option");
+    nOption.innerText="new option" + newValue;
+    nOption.value=newValue;
+    //document.getElementById('t').options[0].selected =true;
+    document.getElementById('t').options.add(nOption);
+
+    newValue = newValue + 1;
+    document.title = newValue;
+    setTimeout(a, 1000); 
+};
+setTimeout(a, 1000); 
+</script>
 </body>
